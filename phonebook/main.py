@@ -24,9 +24,9 @@ def ask_contact(contacts):
 
 
 def add_contact(phone_book):
-    contacts = ask_contact
+    contact = ask_contact
     with open("address_book.txt", "a") as file:
-        for value in phone_book.values():
+        for value in contact.values():
             file.write(str(value))
         file.write("\n")
     return True
