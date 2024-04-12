@@ -18,11 +18,13 @@ def ask_contact(contacts):
         "Фамилия": second_name,
         "Номер телефона": number,
     }
+
     print(f"Контакт {name} добавлен.")
+    return contacts
 
 
 def add_contact(phone_book):
-    contact = ask_contact
+    contacts = ask_contact
     with open("address_book.txt", "a") as file:
         for value in phone_book.values():
             file.write(str(value))
