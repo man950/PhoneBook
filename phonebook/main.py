@@ -1,25 +1,33 @@
-'''from functions import (
+"""from functions import (
     add_contact,
     delete_contact,
     find_contact,
     show_all_contacts,
     ask_contact,
-)'''
-
+)"""
 
 
 def ask_contact(contacts):
     name = input("Введите имя: ")
-    middle_name= input("Введите отчество: ")
+    middle_name = input("Введите отчество: ")
     second_name = input("Введите фамилию: ")
     number = input("Введите номер телефона: ")
-    contacts = {'Имя': name, 'Отсечтво': middle_name, 'Фамилия': second_name, 'Номер телефона': number }
+    contacts = {
+        "Имя": name,
+        "Отсечтво": middle_name,
+        "Фамилия": second_name,
+        "Номер телефона": number,
+    }
     print(f"Контакт {name} добавлен.")
-  
-def add_contact(phone_book):
-    ask_contact(phone_book, contacts,  'a')
-    return contacts
 
+
+def add_contact(phone_book):
+    contact = ask_contact
+    with open("address_book.txt", "a") as file:
+        for value in phone_book.values():
+            file.write(str(value))
+        file.write("\n")
+    return True
 
 
 def delete_contact(phone_book, name):
@@ -56,7 +64,7 @@ def main_menu():
         choice = input("Выберите действие: ")
 
         if choice == "1":
-            ask_contact(phone_book)
+            add_contact(phone_book)
         elif choice == "2":
             name = input("Введите имя для удаления: ")
             delete_contact(phone_book, name)
