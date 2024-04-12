@@ -1,4 +1,3 @@
-
 def add_contact(phone_book, name, number):
     phone_book[name] = number
     print(f"Контакт {name} добавлен.")
@@ -25,4 +24,3 @@ def show_all_contacts(phone_book, name, number):
             print(f"{name}: {number}")
         else:
             print("Телефонная книга пуста:")
-

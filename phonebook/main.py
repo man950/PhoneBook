@@ -1,5 +1,4 @@
-
-from phonebook.functions import add_contact, delete_contact, find_contact, show_all_contacts
+from functions import add_contact, delete_contact, find_contact, show_all_contacts
 
 
 def main_menu():
