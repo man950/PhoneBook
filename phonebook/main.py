@@ -1,4 +1,10 @@
-from functions import add_contact, delete_contact, find_contact, show_all_contacts
+from functions import (
+    add_contact,
+    delete_contact,
+    find_contact,
+    show_all_contacts,
+    ask_contact,
+)
 
 
 def main_menu():
@@ -12,9 +18,7 @@ def main_menu():
         choice = input("Выберите действие: ")
 
         if choice == "1":
-            name = input("Введите имя: ")
-            number = input("Введите номер телефона: ")
-            add_contact(phone_book, name, number)
+            add_contact(phone_book, name, middle_name, second_name, number)
         elif choice == "2":
             name = input("Введите имя для удаления: ")
             delete_contact(phone_book, name)
