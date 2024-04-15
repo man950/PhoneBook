@@ -19,7 +19,7 @@ def ask_contact(contacts):
         "Номер телефона": number,
     }
 
-    print(f"Контакт {name} добавлен.")
+    print(f"Контакт {name} добавлен.", end="\n\n")
     return contacts
 
 
@@ -27,7 +27,7 @@ def add_contact(phone_book):
     contact = ask_contact(phone_book)
     with open("address_book.txt", "a") as file:
         for value in contact.values():
-            file.write(str(value))
+            file.write(str(value, sep="  "))
         file.write("\n")
     return True
 
