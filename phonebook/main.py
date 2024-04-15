@@ -3,7 +3,7 @@
     delete_contact,
     find_contact,
     show_all_contacts,
-    ask_contact,
+    ask_contact, 
 )"""
 
 
@@ -25,12 +25,31 @@ def ask_contact(contacts):
 
 def add_contact(phone_book):
     contact = ask_contact(phone_book)
-    with open("address_book.txt", "a", "UTF-8") as file:
+    with open("address_book.txt", "a", encoding='utf-8') as file:
         for value in contact.values():
             file.write(str(value+'  '))
         file.write("\n")
     return True
 
+
+# def find_contact(phone_book, name):
+#     if name in phone_book:
+#         print(f"{name}: {phone_book[name]}")
+#     else:
+#         print(f"Контакт {name} не найденю")
+
+
+def find_contact(phone_book, name):
+    found = False
+    with open(phone_book, "r", encoding='utf-8') as file:
+        for line in file:
+            if name.lower() in line.lower():
+                print('\n', line)
+                found = True
+               
+        if not found:
+            print(f"Контакт {name} не найденю")
+            
 
 def delete_contact(phone_book, name):
     if name in phone_book:
@@ -40,11 +59,7 @@ def delete_contact(phone_book, name):
         print(f"Контакт {name} не найденю")
 
 
-def find_contact(phone_book, name):
-    if name in phone_book:
-        print(f"{name}: {phone_book[name]}")
-    else:
-        print(f"Контакт {name} не найденю")
+
 
 
 def show_all_contacts(phone_book, name, number):
@@ -73,7 +88,7 @@ def main_menu():
             print("Контакт удален. ")
         elif choice == "3":
             name = input("Введите имя: ")
-            find_contact(phone_book, name)
+            find_contact('address_book.txt', name)
         elif choice == "4":
             name = input("Введите имя: ")
             show_all_contacts(phone_book)
