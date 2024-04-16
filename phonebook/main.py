@@ -82,13 +82,20 @@ def delete_contact(phone_book, name):  # удаляем контакт
 
 def show_all_contacts(phone_book):  # показать все контакты
     with open(phone_book, "r", encoding="utf-8") as file:
-        for line in file:
-            if line:
-                print(line)
+        for idx, line in enumerate(file, start=1):
+            print(f"{idx}. {line.strip()}")
 
-            else:
+        if file.tell() == 0:
                 print("Телефонная книга пуста:")
 
+def copy_contact(phone_book, num):                 #
+     with open(phone_book, "r", encoding="utf-8") as file:
+        for idx, line in enumerate(file, start=1):
+            if idx == num:
+                with open("copied_contacts.txt", "w", encoding="utf-8") as file:
+                    file.write(line)
+                print('контакт скопирован')   
+            
 
 def main_menu():
     phone_book = {}
@@ -97,7 +104,8 @@ def main_menu():
         print("2. Удалить контакт")
         print("3. Найти контакт")
         print("4. Показать все контакты")
-        print("5. Выйти")
+        print("5. Скопировать контакт")
+        print("6. Выйти")
         choice = input("Выберите действие: ")
 
         if choice == "1":
@@ -113,6 +121,10 @@ def main_menu():
             # name = input("Введите имя: ")
             show_all_contacts("address_book.txt")
         elif choice == "5":
+            print("введите немер страки, которую нужно копировать:  ") 
+            contact_num = int(input()) 
+            copy_contact("address_book.txt", contact_num)
+        elif choice == "6":
             print("Выход из программы.")
             break
         else:
